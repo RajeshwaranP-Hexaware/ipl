@@ -13,12 +13,16 @@ app.post('/', (req, res) => {
     if(req.body.queryResult && req.body.queryResult.action == "bookTicket"){
         let params = req.body.queryResult.parameters;
         return res.json({
-            fulfillmentText:"Display Speech- Tickets Booked",
-            fulfillmentMessages: [{
-              "type": 0,
-              "platform": "facebook",
-              "speech": params.noOfTickets + " Tickets are booked for " + params.homeTeam + " vs " + params.awayTeam
-            }]
+            "fulfillmentText": "Have a good time !",
+    "fulfillmentMessages": [
+      {
+        "text": {
+          "text": [
+            "Have a good time !"
+          ]
+        }
+      }
+    ]
         });
     } else{
         return res.json({statusCode:200});
