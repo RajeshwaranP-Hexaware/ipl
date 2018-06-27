@@ -1,5 +1,3 @@
-import { json } from './C:/Users/39850/AppData/Local/Microsoft/TypeScript/2.6/node_modules/@types/body-parser';
-
 'use strict';
 
 const express = require('express');
