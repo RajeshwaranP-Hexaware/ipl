@@ -11,7 +11,7 @@ app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x
 app.post('/', (req, res) => {
     console.log('REQUSST', req.body);
     if(req.body.queryResult && req.body.queryResult.action == "bookTicket"){
-        let params = req.body.parameters;
+        let params = req.body.queryResult.parameters;
         return res.json({
             speech: "Speech- Tickets Booked",
             displayText:"Display Speech- Tickets Booked",
