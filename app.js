@@ -3,7 +3,7 @@
 const express = require('express');
 const app = express()
 
-app.get('/', (req, res) => {
+app.post('/', (req, res) => {
     console.log('REQUSST', JSON.stringify(req));
 });
 
