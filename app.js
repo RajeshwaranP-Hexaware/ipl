@@ -13,9 +13,8 @@ app.post('/', (req, res) => {
     if(req.body.queryResult && req.body.queryResult.action == "bookTicket"){
         let params = req.body.queryResult.parameters;
         return res.json({
-            speech: "Speech- Tickets Booked",
-            displayText:"Display Speech- Tickets Booked",
-            messages: [{
+            fulfillmentText:"Display Speech- Tickets Booked",
+            fulfillmentMessages: [{
               "type": 0,
               "platform": "facebook",
               "speech": params.noOfTickets + " Tickets are booked for " + params.homeTeam + " vs " + params.awayTeam
