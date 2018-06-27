@@ -14,15 +14,15 @@ app.post('/', (req, res) => {
         let params = req.body.queryResult.parameters;
         return res.json({
             "fulfillmentText": "Have a good time !",
-    "fulfillmentMessages": [
-      {
-        "text": {
-          "text": [
-            "Have a good time !"
-          ]
-        }
-      }
-    ]
+            "fulfillmentMessages": [
+              {
+                "text": {
+                  "text": [
+                    params.noOfTickets + " Tickets are booked for " + params.homeTeam + " vs " + params.awayTeam
+                  ]
+                }
+              }
+            ]
         });
     } else{
         return res.json({statusCode:200});
