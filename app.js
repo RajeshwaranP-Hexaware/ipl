@@ -12,7 +12,30 @@ app.post('/', (req, res) => {
     console.log('REQUSST', req.body);
     if(req.body.queryResult && req.body.queryResult.action == "bookTicket"){
         let params = req.body.queryResult.parameters;
-        return res.json({
+        if(params.noOfTickets >10){
+          console.log('No Of Tickets ', params.noOfTickets);
+          return res.json({
+            "fulfillmentText": "Number of tickets should be below 10",
+            "fulfillmentMessages": [
+              {
+                "text": {
+                  "text": [
+                    "No. of tickets should be below 10"
+                  ]
+                }
+              }
+            ],
+            "followupEventInput": {
+              "name": "customNoOfTickets",
+              "languageCode": "en-US",
+              "parameters": {
+                "awayTeam": params.awayTeam,
+                "homeTeam": params.homeTeam
+              }
+            }
+        });
+        } else{
+          return res.json({
             "fulfillmentText": "Have a good time !",
             "fulfillmentMessages": [
               {
@@ -23,7 +46,8 @@ app.post('/', (req, res) => {
                 }
               }
             ]
-        });
+          });
+        }
     } else{
         return res.json({statusCode:200});
     }
