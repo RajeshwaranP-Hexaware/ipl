@@ -13,7 +13,7 @@ app.post('/', (req, res) => {
     if(req.body.queryResult && req.body.queryResult == "getLeagueTeam"){
       console.log('FEDDY ', JSON.stringify(req.body));
       let params = req.body.queryResult.parameters;
-      let userStorage = req.body.user.userStorage ? JSON.parse(req.body.user.userStorage) : {};
+      let userStorage = req.body.originalDetectIntentRequest.payload.user.userStorage ? JSON.parse(req.body.originalDetectIntentRequest.payload.user.userStorage) : {};
       userStorage.leagueTeam = params.leagueTeam;
 
       return res.json({
@@ -26,7 +26,7 @@ app.post('/', (req, res) => {
     } else if(req.body.queryResult && req.body.queryResult == "getCountryTeamName"){
       console.log('FEDERER ', JSON.stringify(req.body));
       let params = req.body.queryResult.parameters;
-      let userStorage = req.body.user.userStorage ? JSON.parse(req.body.user.userStorage) : {};
+      let userStorage = req.body.originalDetectIntentRequest.payload.user.userStorage ? JSON.parse(req.body.originalDetectIntentRequest.payload.user.userStorage) : {};
       userStorage.countryName = params.countryName;
 
       return res.json({
@@ -39,7 +39,7 @@ app.post('/', (req, res) => {
     } else if(req.body.queryResult && req.body.queryResult.action == "bookTicket"){
         console.log('UNIQLO FEDERER ', JSON.stringify(req.body));
         let params = req.body.queryResult.parameters;
-        let userStorage = req.body.user.userStorage ? JSON.parse(req.body.user.userStorage) : {};
+        let userStorage = req.body.originalDetectIntentRequest.payload.user.userStorage ? JSON.parse(req.body.originalDetectIntentRequest.payload.user.userStorage) : {};
         userStorage.homeTeam = params.homeTeam;
         userStorage.awayTeam = params.awayTeam;
         return res.json({
