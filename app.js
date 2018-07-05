@@ -10,7 +10,7 @@ app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x
 app.post('/', (req, res) => {
     console.log('REQUSST', req.body);
 
-    if(req.body.queryResult && req.body.queryResult == "getLeagueTeam"){
+    if(req.body.queryResult && req.body.queryResult.action == "getLeagueTeam"){
       console.log('FEDDY ', JSON.stringify(req.body));
       let params = req.body.queryResult.parameters;
       let userStorage = req.body.originalDetectIntentRequest.payload.user.userStorage ? JSON.parse(req.body.originalDetectIntentRequest.payload.user.userStorage) : {};
@@ -23,7 +23,7 @@ app.post('/', (req, res) => {
           "ssml":  "<speak> </speak>"
         }}
       });
-    } else if(req.body.queryResult && req.body.queryResult == "getCountryTeamName"){
+    } else if(req.body.queryResult && req.body.queryResult.action == "getCountryTeamName"){
       console.log('FEDERER ', JSON.stringify(req.body));
       let params = req.body.queryResult.parameters;
       let userStorage = req.body.originalDetectIntentRequest.payload.user.userStorage ? JSON.parse(req.body.originalDetectIntentRequest.payload.user.userStorage) : {};
