@@ -18,9 +18,9 @@ app.post('/', (req, res) => {
 
       return res.json({
         "userStorage": JSON.stringify(userStorage),
-        "expectUserResponse": true,
         "finalResponse": {"speechResponse": {
-          "ssml": "<speak>Its Oh Great. Nice to know that you like "+ params.leagueTeam +" <say-as interpret-as=\"characters\">GGMU</say-as> </speak>"
+          "textToSpeech": "Its Oh Great. Nice to know that you like "+ params.leagueTeam ,
+          "ssml":  "<speak> </speak>"
         }}
       });
     } else if(req.body.queryResult && req.body.queryResult == "getCountryTeamName"){
@@ -32,9 +32,9 @@ app.post('/', (req, res) => {
       return res.json({
         "userStorage": JSON.stringify(userStorage),
         "finalResponse": {"speechResponse": {
-          "ssml": "<speak> Its "+ params.countryName+" will do it. <say-as interpret-as=\"characters\">GGMU</say-as> </speak>"
-        }},
-        "expectUserResponse": true
+          "textToSpeech": "Its "+ params.countryName+" will do it.",
+          "ssml": "<speak> </speak>"
+        }}
       });
     } else if(req.body.queryResult && req.body.queryResult.action == "bookTicket"){
         console.log('UNIQLO FEDERER ', JSON.stringify(req.body));
@@ -45,7 +45,8 @@ app.post('/', (req, res) => {
         return res.json({
           "userStorage": JSON.stringify(userStorage),
           "finalResponse": {"speechResponse": {
-            "ssml": "<speak> Its "+ params.homeTeam+" vs "+ params.awayTeam+" <say-as interpret-as=\"characters\">GGMU</say-as> </speak>"
+            "textToSpeech": "Its "+ params.homeTeam+" vs "+ params.awayTeam ,
+            "ssml": "<speak> </speak>"
           }},
           "expectUserResponse": true
         });
