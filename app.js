@@ -12,17 +12,43 @@ app.post('/', (req, res) => {
 
     if(req.body.queryResult && req.body.queryResult.action == "getLeagueTeam"){
       console.log('FEDDY ', JSON.stringify(req.body));
-      let params = req.body.queryResult.parameters;
-      let userStorage = req.body.originalDetectIntentRequest.payload.user.userStorage ? JSON.parse(req.body.originalDetectIntentRequest.payload.user.userStorage) : {};
-      userStorage.leagueTeam = params.leagueTeam;
-
       return res.json({
-        "userStorage": JSON.stringify(userStorage),
-        "finalResponse": {"speechResponse": {
-          "textToSpeech": "Its Oh Great. Nice to know that you like "+ params.leagueTeam ,
-          "ssml":  "<speak> </speak>"
-        }}
-      });
+        "conversationToken": "",
+        "expectUserResponse": true,
+        "expectedInputs": [
+            {
+                "inputPrompt": {
+                    "richInitialPrompt": {
+                        "items": [
+                            {
+                                "simpleResponse": {
+                                    "textToSpeech": "Howdy! I can tell you fun facts about almost any number, like 42. What do you have in mind?",
+                                    "displayText": "Howdy! I can tell you fun facts about almost any number. What do you have in mind?"
+                                }
+                            }
+                        ],
+                        "suggestions": []
+                    }
+                },
+                "possibleIntents": [
+                    {
+                        "intent": "actions.intent.TEXT"
+                    }
+                ]
+            }
+        ]
+    });
+      // let params = req.body.queryResult.parameters;
+      // let userStorage = req.body.originalDetectIntentRequest.payload.user.userStorage ? JSON.parse(req.body.originalDetectIntentRequest.payload.user.userStorage) : {};
+      // userStorage.leagueTeam = params.leagueTeam;
+
+      // return res.json({
+      //   "userStorage": JSON.stringify(userStorage),
+      //   "finalResponse": {"speechResponse": {
+      //     "textToSpeech": "Its Oh Great. Nice to know that you like "+ params.leagueTeam ,
+      //     "ssml":  "<speak> </speak>"
+      //   }}
+      // });
     } else if(req.body.queryResult && req.body.queryResult.action == "getCountryTeamName"){
       console.log('FEDERER ', JSON.stringify(req.body));
       let params = req.body.queryResult.parameters;
