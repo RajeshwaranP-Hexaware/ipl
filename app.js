@@ -16,18 +16,39 @@ app.post('/', (req, res) => {
       let userStorage = req.body.originalDetectIntentRequest.payload.user.userStorage ? JSON.parse(req.body.originalDetectIntentRequest.payload.user.userStorage) : {};
       userStorage.leagueTeam = params.leagueTeam;
       return res.json({
-        userStorage : JSON.stringify(userStorage),
-        "fulfillmentText": "Number of tickets should be below 10",
+        "fulfillmentText": "This is a text response",
         "fulfillmentMessages": [
           {
-            "text": {
-              "text": [
-                "No. of tickets should be below 10"
+            "card": {
+              "title": "card title",
+              "subtitle": "card text",
+              "imageUri": "https://assistant.google.com/static/images/molecule/Molecule-Formation-stop.png",
+              "buttons": [
+                {
+                  "text": "button text",
+                  "postback": "https://assistant.google.com/"
+                }
               ]
             }
           }
-        ]
-    });
+        ],
+        "source": "example.com",
+        "payload": {
+          "google": {
+            "expectUserResponse": true,
+            "richResponse": {
+              "items": [
+                {
+                  "simpleResponse": {
+                    "textToSpeech": "this is a simple response"
+                  }
+                }
+              ]
+            },
+            "userStorage": JSON.stringify(userStorage)
+          }
+        }
+      });
 
 
       // let params = req.body.queryResult.parameters;
