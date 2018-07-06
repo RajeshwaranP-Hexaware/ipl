@@ -78,14 +78,6 @@ app.post('/', (req, res) => {
                     ]
                   }
                 }
-              ],
-              "suggestions": [
-                {
-                  "title": "Worldcup"
-                },
-                {
-                  "title": "Continental cup"
-                }
               ]
             },
             "userStorage": JSON.stringify(userStorage)
@@ -125,17 +117,6 @@ app.post('/', (req, res) => {
                       ],
                       "imageDisplayOptions": ["WHITE"]
                     }
-                  }
-                ],
-                "suggestions": [
-                  {
-                    "title": "CSK"
-                  },
-                  {
-                    "title": "FA Cup"
-                  },
-                  {
-                    "title": "Champions League"
                   }
                 ]
               },
