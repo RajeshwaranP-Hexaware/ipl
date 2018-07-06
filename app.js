@@ -25,7 +25,7 @@ app.post('/', (req, res) => {
                   {
                     "simpleResponse": {
                       "textToSpeech": "Its Oh Great. Nice to know that you like "+ params.leagueTeam
-                    },
+                    }
                   }
                 ],
                 "suggestions": [
@@ -58,6 +58,9 @@ app.post('/', (req, res) => {
             "richResponse": {
               "items": [
                 {
+                  "simpleResponse": {
+                    "textToSpeech": params.countryName + " will surely do it."
+                  },
                   "basicCard":{
                     "title": "Title",
                     "subtitle": "Sub title",
@@ -102,6 +105,9 @@ app.post('/', (req, res) => {
               "richResponse": {
                 "items": [
                   {
+                    "simpleResponse": {
+                      "textToSpeech": userStorage.homeTeam + " vs " + userStorage.awayTeam
+                    },
                     "carouselBrowse":{
                       "items": [
                         {
