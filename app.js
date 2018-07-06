@@ -72,7 +72,8 @@ app.post('/', (req, res) => {
                       // "width": number
                     },
                     "buttons": [{
-                      "title": "Submit"
+                      "title": "Submit",
+                      "open_url_action":"http://www.facebook.com"
                       }
                     ]
                   }
