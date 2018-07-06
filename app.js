@@ -100,25 +100,41 @@ app.post('/', (req, res) => {
                   {
                     "simpleResponse": {
                       "textToSpeech": userStorage.homeTeam + " vs " + userStorage.awayTeam
-                    },
-                    "carouselBrowse":{
-                      "items": [
-                        {
-                          "title": "Carousal",
-                          "description": "description",
-                          "footer": "Footer",
-                          "image": {
-                            "url": "https://cdn.pixabay.com/photo/2017/01/06/23/21/soap-bubble-1959327_960_720.jpg"
-                          },
-                          "openUrlAction": {
-                            "url": "http://www.rf.com",   
-                          }
-                        }
-                      ],
-                      "imageDisplayOptions": ["WHITE"]
                     }
                   }
                 ]
+              },
+              "systemIntent": {
+                "intent": "actions.intent.OPTION",
+                "data": {
+                  "@type": "type.googleapis.com/google.actions.v2.OptionValueSpec",
+                  "carouselSelect": {
+                    "items": [
+                      {
+                        "optionInfo": {
+                          "key": "first title"
+                        },
+                        "description": "first description",
+                        "image": {
+                          "url": "https://developers.google.com/actions/images/badges/XPM_BADGING_GoogleAssistant_VER.png",
+                          "accessibilityText": "first alt"
+                        },
+                        "title": "first title"
+                      },
+                      {
+                        "optionInfo": {
+                          "key": "second"
+                        },
+                        "description": "second description",
+                        "image": {
+                          "url": "https://lh3.googleusercontent.com/Nu3a6F80WfixUqf_ec_vgXy_c0-0r4VLJRXjVFF_X_CIilEu8B9fT35qyTEj_PEsKw",
+                          "accessibilityText": "second alt"
+                        },
+                        "title": "second title"
+                      }
+                    ]
+                  }
+                }
               },
               "userStorage": JSON.stringify(userStorage)
             }
