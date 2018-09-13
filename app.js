@@ -8,7 +8,7 @@ app.use(bodyParser.json()); // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 
 app.post('/', (req, res) => {
-    console.log('REQUSST', jSON.stringify(req.body));
+    console.log('REQUSST', JSON.stringify(req.body));
 
     if(req.body.queryResult && req.body.queryResult.action == "getLeagueTeam"){
       console.log('FEDDY ', JSON.stringify(req.body));
