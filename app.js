@@ -8,7 +8,7 @@ app.use(bodyParser.json()); // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 
 app.post('/', (req, res) => {
-    console.log('REQUSST', req.body);
+    console.log('REQUSST', jSON.stringify(req.body));
 
     if(req.body.queryResult && req.body.queryResult.action == "getLeagueTeam"){
       console.log('FEDDY ', JSON.stringify(req.body));
@@ -124,7 +124,7 @@ app.post('/', (req, res) => {
             }
           } 
         });
-    } else if(req.body.intent == "addNationalId"){
+    } else if(req.body.metadata.intentName == "addNationalId"){
         let leave_details= [];
         leave_details.push({
             "optionInfo": {
@@ -163,7 +163,7 @@ app.post('/', (req, res) => {
               }
           ]
       };
-    } else if(req.body.intent == "addNationalId-type"){
+    } else if(req.body.metadata.intentName == "addNationalId-type"){
       console.log('FULL REQ IN addNationalId', JSON.stringify(req.body));
       var country, nationalIdType="", nationalId ="", comment=""
       for(var i=0;i<contexts.length;i++){
